@@ -1,6 +1,8 @@
 import { navbar } from "../../components/navbar.js"
 const btnCancel = document.getElementById('btnCancel')
 const btnTravel = document.getElementById('btnTravel')
+const successModal = document.getElementById('successModal');
+
 
 document.addEventListener('DOMContentLoaded', async()=>{
     const summary = JSON.parse(localStorage.getItem('summary'))
@@ -49,7 +51,10 @@ btnTravel.addEventListener('click', async () => {
             const reservation = await response.json();
             console.log('Reservation created:', reservation);
             localStorage.removeItem('summary');
-            window.location.href = '../../';
+            successModal.classList.remove('hidden');
+            setTimeout(() => {
+                window.location.href = '../../';
+            },2000);
         } else {
             const errorData = await response.json();
             console.error('Error creating reservation:', errorData.message);
@@ -58,3 +63,4 @@ btnTravel.addEventListener('click', async () => {
         console.error('Error:', error);
     }
 })
+
