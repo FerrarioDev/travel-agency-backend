@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body class="absolute top-0 z-[-2] h-screen w-screen bg-purple-100 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+    <header id="header"></header>
+    <div class="flex flex-col md:flex-row gap-5 md:m-10 justify-center items-center">
+       
+        <img id="img" class="w-113,78 h-64 md:rounded-xl shadow-xl shadow-purple-900/50">
+
+        
+        <div class="bg-purple-900 rounded-3xl p-5 space-y-2">
+            <h1 class="text-3xl font-semibold text-purple-50" id="title">Calculá tu viaje</h1>
+            <div class="flex flex-col gap-5">
+                <div>
+                    <label for="hotel" class="text-purple-50">Hoteles</label>
+                    <select  id="hotel" class="w-full rounded-lg p-2 my-1 bg-purple-200"></select>
+                </div>
+                <div>
+                    <label for="cant" class="text-purple-50 ">Huespedes</label>
+                    <input type="number" id="cant" class="w-full rounded-lg p-2 my-1 bg-purple-200">
+                </div>
+                <div>
+                    <label for="days" class="text-purple-50">Dias</label>
+                    <input type="number" id="days" class="w-full rounded-lg p-2 my-1 bg-purple-200">
+                </div>
+    
+                <div class="flex justify-between items-center gap-5">
+                    <p class="w-1/2 text-3xl font-semibold text-purple-50" id="total">$50000</p>
+                    <button id="btnTravel" class="bg-purple-100 p-2 rounded-xl text-purple-500 font-semibold hover:bg-purple-50 w-fulltext-center w-1/2">Viajar!</button>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+    <div class="flex gap-5 m-10 justify-center items-center">
+        <p class="text-3xl text-purple-50 bg-purple-500 p-5 rounded-3xl w-full md:w-2/3" id="desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem mollitia explicabo velit, inventore porro soluta quam voluptate, odit adipisci praesentium doloribus commodi ratione. Voluptatum omnis perferendis impedit, libero porro repellat!
+            Distinctio temporibus minima illum. Quia possimus corporis impedit neque labore accusantium delectus voluptatum tenetur nisi? Dolorem quia, doloremque unde, itaque a architecto amet laborum magni nulla perspiciatis soluta reprehenderit repudiandae!
+        </p>
+    </div>
+    
+    <script type="module" src="./index.controller.js"></script>
+</body>
+</html>

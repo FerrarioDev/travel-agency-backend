@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body class="absolute top-0 z-[-2] h-screen w-screen bg-purple-100 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+    <header id="header"></header>
+    <div class="flex justify-center items-center">
+        <div class="my-10 bg-purple-900 grid grid-cols-3 rounded-3xl p-3 gap-5 text-purple-50 ">
+            <div class="col-span-3 md:col-span-1 ">
+                <div class="flex flex-col justify-center items-start space-y-3">
+                    <h1 class=" font-semibold text-3xl m-3">Resumen</h1>
+
+                    <label for="city" class="text-xl">Destino</label>
+                    <input type="text" id="city" disabled value="asdasd" class="p-2 rounded-3xl w-full">
+    
+                    <label for="hotel" class="text-xl">Hotel</label>
+                    <input type="text" id="hotel" disabled value="asdasd" class="p-2 rounded-3xl w-full">
+    
+                    <label for="cant" class="text-xl">Huespedes</label>
+                    <input type="text" id="cant" disabled value="asdasd" class="p-2 rounded-3xl w-full">
+    
+                    <label for="" class="text-xl">Dias</label>
+                    <input type="text" id="days" disabled value="asdasd" class="p-2 rounded-3xl w-full">
+    
+                    <label for="" class="text-xl">Total</label>
+                    <input type="text" id="total" disabled value="asdasd" class="p-2 rounded-3xl w-full">
+                </div>
+            </div>
+
+            <div class="col-span-3 md:col-span-2 text-center bg-purple-950 rounded-xl">
+                
+                <div class="flex flex-col justify-center items-start space-y-3 mx-3 mb-3">
+
+                    <h1 class=" font-semibold text-3xl m-3">Datos de facturación</h1>
+
+                    <label for="name" class="text-xl">Nombre</label>
+                    <input type="text" id="name"  placeholder="Jhon" class="p-2 rounded-3xl w-full bg-purple-200 text-purple-900">
+    
+                    <label for="lastName" class="text-xl">Apellido</label>
+                    <input type="text" id="lastName"  placeholder="Doe" class="p-2 rounded-3xl w-full bg-purple-200 text-purple-900">
+    
+                    <label for="email" class="text-xl">Email</label>
+                    <input type="email" id="email"  placeholder="Jhondoe@example.com" class="p-2 rounded-3xl w-full bg-purple-200 text-purple-900">
+    
+                    <label for="tel" class="text-xl">Telefono</label>
+                    <input type="tel" id="tel"  placeholder="xxxxxxxxx" class="p-2 rounded-3xl w-full bg-purple-200 text-purple-900">
+                </div>
+                <div class="p-5 mt-5 flex justify-between gap-5">
+
+                    <button id="btnCancel" class="bg-rose-500 p-2 rounded-xl text-neutral-50 font-semibold hover:bg-rose-600 text-center w-full">Cancelar</button>
+                    <button id="btnTravel" class="bg-purple-100 p-2 rounded-xl text-purple-500 font-semibold hover:bg-purple-50 text-center w-full">Viajar!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./index.controller.js"></script>
+</body>
+</html>
