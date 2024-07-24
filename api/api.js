@@ -20,3 +20,5 @@ app.use('/api/hotels', hotelRouter);
 app.use('/api/reservations', reservationRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.use(express.static('../public'));
