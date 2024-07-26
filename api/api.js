@@ -7,7 +7,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import express from 'express';
 
-
 const PORT = process.env.PORT || 5000;
 const app = express();
 connectDB();

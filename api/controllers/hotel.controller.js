@@ -1,5 +1,6 @@
 import Hotel from "../models/hotel.model.js";
 
+// devuelve todos los hoteles de la ciudad seleccionada
 export const getHotelsByCity = async (req, res) => {
     try {
         const hotels = await Hotel.find({cityId: req.params.id});
