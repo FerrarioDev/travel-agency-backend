@@ -12,6 +12,8 @@ let city = []
 let hotels = {}
 let selectedHotel = []
 let totalPrice
+
+// calcula el precio total de la reserva teniendo en cuenta la cantidad de noches, cantidad de personas, el hotel seleccionado y el precio base de la ciuadad
 const getTotal = () => {
     const cant = inputCant.value 
     const days = inputDays.value 
@@ -20,6 +22,7 @@ const getTotal = () => {
     totalP.textContent = `$${totalPrice}`
 }
 
+// obtiene los hoteles de la ciudad seleccionada desde el backend
 const getHotelsByCity = async (cityId) => {
     try {
         const response = await fetch(`http://localhost:3000/api/hotels/${cityId}`);
@@ -33,6 +36,7 @@ const getHotelsByCity = async (cityId) => {
         return null;
     }
 }
+
 btn.addEventListener('click', () => {
     const data = {
         city: city,
@@ -41,23 +45,28 @@ btn.addEventListener('click', () => {
         days: inputDays.value,
         total: totalPrice
     }
-    console.log(data)
     localStorage.setItem('summary', JSON.stringify(data))
     window.location.href = '../summary/'
 })
 
+// al cargar el documento obtiene la informacion de la ciudad seleccionada
 document.addEventListener('DOMContentLoaded', async()=>{
     const response = await fetch('http://localhost:3000/api/cities')
     console.log('Fetching data from server...')
     const data = await response.json()
     console.log('Data fetched successfully:', data)    
-    city = data.find(city => city._id === selectedCity) //Este codigo puede variar dependiendo de como se obtenga la ciudad seleccionada
+    
+    // obtiene la informacion de la ciudad seleccionada
+    city = data.find(city => city._id === selectedCity)
+
+    // muestra la informacion de las ciudades
     totalP.textContent = `$${city.basePrice}`
     console.log(city.basePrice)
     document.getElementById('title').textContent = `Calcula tu viaje a ${city.name}`
     document.getElementById('img').src = city.image
     document.getElementById('desc').textContent = city.description
 
+    // obtiene los hoteles de la ciudad seleccionada y los agrega al select
     hotels = await getHotelsByCity(city._id);
     if (hotels) {
         let hotelOptions = '';
@@ -69,6 +78,7 @@ document.addEventListener('DOMContentLoaded', async()=>{
     
 })
 
+// al cambiar uno de los valores calcula el total
 inputCant.addEventListener('input', () => {
     console.log(inputCant.value)
     getTotal()

@@ -1,15 +1,15 @@
 import { navbar } from "../../components/navbar.js"
 const btnCancel = document.getElementById('btnCancel')
 const btnTravel = document.getElementById('btnTravel')
+// modal para notificar que la reserva se realizo con exito y mejorar la ux
 const successModal = document.getElementById('successModal');
 
-
+// al cargar la pagina asigna los valores cargados para completar la reserva
 document.addEventListener('DOMContentLoaded', async()=>{
     const summary = JSON.parse(localStorage.getItem('summary'))
     const header = document.getElementById('header')
     header.innerHTML = navbar()
-
-    //Este codigo puede variar dependiendo de como se maneje la informacion del localStorage
+    
     document.getElementById('city').value = summary.city.name
     document.getElementById('hotel').value = summary.hotel.name
     document.getElementById('cant').value = summary.cant
@@ -18,14 +18,18 @@ document.addEventListener('DOMContentLoaded', async()=>{
     console.log(summary.total)
 })
 
+// al pulsar el boton de cancelar redirecciona a la pagina principal y elimina la informacion del localStorage
 btnCancel.addEventListener('click', () => {
     localStorage.removeItem('summary')
+    localStorage.removeItem('selectedCity')
     window.location.href = '../../'
 })
 
+// genera la reserva y redirecciona a la pagina principal con un mensaje de exito
 btnTravel.addEventListener('click', async () => {
     const summary = JSON.parse(localStorage.getItem('summary'));
 
+    // Crea el objeto de datos de la reserva
     const reservationData = {
         cityId: summary.city._id,
         hotelId: summary.hotel._id,
@@ -39,6 +43,7 @@ btnTravel.addEventListener('click', async () => {
     };
 
     try {
+        // envia la informacion al backend
         const response = await fetch('http://localhost:3000/api/reservations', {
             method: 'POST',
             headers: {
@@ -50,6 +55,7 @@ btnTravel.addEventListener('click', async () => {
         if (response.ok) {
             const reservation = await response.json();
             console.log('Reservation created:', reservation);
+            localStorage.removeItem('selectedCity');
             localStorage.removeItem('summary');
             successModal.classList.remove('hidden');
             setTimeout(() => {
